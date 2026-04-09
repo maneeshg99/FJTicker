@@ -1,0 +1,62 @@
+{
+  "name": "fj-ticker",
+  "version": "1.0.0",
+  "description": "Financial news ticker from FinancialJuice",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:all": "electron-builder --win --mac",
+    "pack": "electron-builder --win --dir",
+    "pack:mac": "electron-builder --mac --dir"
+  },
+  "author": "FJTicker",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "fast-xml-parser": "^4.5.0"
+  },
+  "build": {
+    "appId": "com.fjticker.app",
+    "productName": "FJ Ticker",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.finance"
+    },
+    "dmg": {
+      "contents": [
+        { "x": 130, "y": 220 },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "files": [
+      "main.js",
+      "renderer/**/*",
+      "build/icon.ico",
+      "build/icon.png",
+      "build/trayTemplate.png",
+      "build/trayTemplate@2x.png"
+    ]
+  }
+}
