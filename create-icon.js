@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-// Generate a 256x256 ICO with "FJ" text
-const size = 256;
+// Generate a 512x512 icon with "FJ" text (macOS requires at least 512x512)
+const size = 512;
 const pixels = Buffer.alloc(size * size * 4);
 
 for (let y = 0; y < size; y++) {
